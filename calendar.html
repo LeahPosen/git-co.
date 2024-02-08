@@ -16,7 +16,7 @@
 
 
     <script>
-        let allEvents=[];
+        let allEvents = [];
         document.addEventListener("DOMContentLoaded", function () {
             axios.get("https://eventsapi.onrender.com/api/Events").then((res) => {
                 var calendarEl = document.getElementById("calendar");
@@ -30,11 +30,11 @@
 
         function getEvents() {
             //send request to API
-                axios.get("https://eventsapi.onrender.com/api/Events").then(res => {
-                res.data.forEach(e=>allEvents.push({"id":e.id,"title":e.title}))
-                console.log('res',res.data)
+            axios.get("https://eventsapi.onrender.com/api/Events").then(res => {
+                res.data.forEach(e => allEvents.push({ "id": e.id, "title": e.title }))
+                console.log('res', res.data)
             })
-            
+
         }
 
         function addEvent() {
@@ -57,10 +57,10 @@
         function deleteEvent() {
             document.querySelector("body").innerHTML += "<input id='list1' list='allEventsToDelete'></input><datalist id='allEventsToDelete'></datalist>";
 
-             axios.get("https://eventsapi.onrender.com/api/Events").then(res => {
-                 console.log('res',res.data)
-                     res.data.forEach(e=>document.querySelector("#allEventsToDelete").innerHTML += "<option value=" +e.id+ ">");
-             })
+            axios.get("https://eventsapi.onrender.com/api/Events").then(res => {
+                console.log('res', res.data)
+                res.data.forEach(e => document.querySelector("#allEventsToDelete").innerHTML += "<option value=" + e.id + ">");
+            })
 
             document.querySelector("body").innerHTML += "<input type='button' value='Clear' id='clear'/>";
 
@@ -74,14 +74,17 @@
 
 
         function updateEvent() {
-                    let id = 2;
-                    axios.put(`https://eventsapi.onrender.com/api/Events/${id}`, {
-                        "title": "updaet event from js",
-                        "start": "2023-09-05"
-                    }).then(res => {
-                        console.log(res.data);
-                    })
-                }
+            let id = 2;
+            axios.put(`https://eventsapi.onrender.com/api/Events/${id}`, {
+                "title": "updaet event from js",
+                "start": "2023-09-05"
+            }).then(res => {
+                console.log(res.data);
+            })
+        }
+        function printHello() {
+            console.log("hello")
+        }
     </script>
 
 </body>
